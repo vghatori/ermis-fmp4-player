@@ -13,7 +13,7 @@ if linkage != nil
   Pod::UI.puts "Configuring Pod with #{linkage}ally linked Frameworks".green
   use_frameworks! :linkage => linkage.to_sym
 end
-
+source 'https://cdn.cocoapods.org/'
 target 'fmp4_player' do
   config = use_native_modules!
 
@@ -22,6 +22,8 @@ target 'fmp4_player' do
     # An absolute path to your application root.
     :app_path => "#{Pod::Config.instance.installation_root}/.."
   )
+
+  pod 'MobileVLCKit', '~>3.3.0'
 
   post_install do |installer|
     react_native_post_install(
@@ -32,3 +34,7 @@ target 'fmp4_player' do
     )
   end
 end
+
+
+
+

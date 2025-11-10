@@ -9,15 +9,44 @@
 /* Begin PBXBuildFile section */
 		0C80B921A6F3F58F76C31292 /* libPods-fmp4_player.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DCACB8F33CDC322A6C60F78 /* libPods-fmp4_player.a */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
+		375BACEC2EB07D4F00AFFEFF /* Fmp4AVPlayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 375BACEB2EB07D4F00AFFEFF /* Fmp4AVPlayer.mm */; };
+		3761095D2EB9B0E900D98975 /* MobileVLCKit.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3761095C2EB9B0E900D98975 /* MobileVLCKit.xcframework */; };
+		376EFBBE2EAB69100081442A /* NativeFmp4Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 376EFBBD2EAB69100081442A /* NativeFmp4Player.swift */; };
+		376EFBC12EAB6A350081442A /* Fmp4Module.mm in Sources */ = {isa = PBXBuildFile; fileRef = 376EFBC02EAB6A350081442A /* Fmp4Module.mm */; };
+		37E684102EBB43E700C67CE4 /* Fmp4DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37E6840F2EBB43E700C67CE4 /* Fmp4DataSource.swift */; };
+		37FE36F62EB1B98800FACDA1 /* Fmp4AVPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37FE36F52EB1B98800FACDA1 /* Fmp4AVPlayerView.swift */; };
 		761780ED2CA45674006654EE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761780EC2CA45674006654EE /* AppDelegate.swift */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
+		C29C24E05737F1157B4B89B1 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB81A68108700A75B9A /* PrivacyInfo.xcprivacy */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		3761095F2EB9B0E900D98975 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		13B07F961A680F5B00A75B9A /* fmp4_player.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = fmp4_player.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = fmp4_player/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = fmp4_player/Info.plist; sourceTree = "<group>"; };
 		13B07FB81A68108700A75B9A /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = PrivacyInfo.xcprivacy; path = fmp4_player/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		375BACEA2EB07D4F00AFFEFF /* Fmp4AVPlayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Fmp4AVPlayer.h; sourceTree = "<group>"; };
+		375BACEB2EB07D4F00AFFEFF /* Fmp4AVPlayer.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = Fmp4AVPlayer.mm; sourceTree = "<group>"; };
+		3761095C2EB9B0E900D98975 /* MobileVLCKit.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = MobileVLCKit.xcframework; path = Pods/MobileVLCKit/MobileVLCKit.xcframework; sourceTree = "<group>"; };
+		376EFBBD2EAB69100081442A /* NativeFmp4Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NativeFmp4Player.swift; sourceTree = "<group>"; };
+		376EFBBF2EAB6A160081442A /* Fmp4ModuleBridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Fmp4ModuleBridge.h; sourceTree = "<group>"; };
+		376EFBC02EAB6A350081442A /* Fmp4Module.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = Fmp4Module.mm; sourceTree = "<group>"; };
+		376EFBC22EAB6A370081442A /* fmp4_player-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "fmp4_player-Bridging-Header.h"; sourceTree = "<group>"; };
+		37E6840F2EBB43E700C67CE4 /* Fmp4DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fmp4DataSource.swift; sourceTree = "<group>"; };
+		37FE36F52EB1B98800FACDA1 /* Fmp4AVPlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fmp4AVPlayerView.swift; sourceTree = "<group>"; };
 		3B4392A12AC88292D35C810B /* Pods-fmp4_player.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fmp4_player.debug.xcconfig"; path = "Target Support Files/Pods-fmp4_player/Pods-fmp4_player.debug.xcconfig"; sourceTree = "<group>"; };
 		5709B34CF0A7D63546082F79 /* Pods-fmp4_player.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fmp4_player.release.xcconfig"; path = "Target Support Files/Pods-fmp4_player/Pods-fmp4_player.release.xcconfig"; sourceTree = "<group>"; };
 		5DCACB8F33CDC322A6C60F78 /* libPods-fmp4_player.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-fmp4_player.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -31,6 +60,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3761095D2EB9B0E900D98975 /* MobileVLCKit.xcframework in Frameworks */,
 				0C80B921A6F3F58F76C31292 /* libPods-fmp4_player.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -53,10 +83,33 @@
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3761095C2EB9B0E900D98975 /* MobileVLCKit.xcframework */,
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
 				5DCACB8F33CDC322A6C60F78 /* libPods-fmp4_player.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		376EFBBC2EAB66580081442A /* fmp4_module */ = {
+			isa = PBXGroup;
+			children = (
+				376EFBC02EAB6A350081442A /* Fmp4Module.mm */,
+				376EFBBF2EAB6A160081442A /* Fmp4ModuleBridge.h */,
+				376EFBBD2EAB69100081442A /* NativeFmp4Player.swift */,
+				376EFBC22EAB6A370081442A /* fmp4_player-Bridging-Header.h */,
+			);
+			path = fmp4_module;
+			sourceTree = "<group>";
+		};
+		37FE36F72EB1B9CF00FACDA1 /* fmp4_component */ = {
+			isa = PBXGroup;
+			children = (
+				37E6840F2EBB43E700C67CE4 /* Fmp4DataSource.swift */,
+				37FE36F52EB1B98800FACDA1 /* Fmp4AVPlayerView.swift */,
+				375BACEA2EB07D4F00AFFEFF /* Fmp4AVPlayer.h */,
+				375BACEB2EB07D4F00AFFEFF /* Fmp4AVPlayer.mm */,
+			);
+			path = fmp4_component;
 			sourceTree = "<group>";
 		};
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
@@ -69,6 +122,8 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				37FE36F72EB1B9CF00FACDA1 /* fmp4_component */,
+				376EFBBC2EAB66580081442A /* fmp4_module */,
 				13B07FAE1A68108700A75B9A /* fmp4_player */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				83CBBA001A601CBA00E9B192 /* Products */,
@@ -111,6 +166,7 @@
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
 				00EEFC60759A1932668264C0 /* [CP] Embed Pods Frameworks */,
 				E235C05ADACE081382539298 /* [CP] Copy Pods Resources */,
+				3761095F2EB9B0E900D98975 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -127,10 +183,11 @@
 		83CBB9F71A601CBA00E9B192 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 1210;
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 2600;
 				TargetAttributes = {
 					13B07F861A680F5B00A75B9A = {
-						LastSwiftMigration = 1120;
+						LastSwiftMigration = 2600;
 					};
 				};
 			};
@@ -159,6 +216,7 @@
 			files = (
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
+				C29C24E05737F1157B4B89B1 /* PrivacyInfo.xcprivacy in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -189,9 +247,13 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-fmp4_player/Pods-fmp4_player-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
+			inputPaths = (
+			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-fmp4_player/Pods-fmp4_player-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -228,9 +290,13 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-fmp4_player/Pods-fmp4_player-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
+			inputPaths = (
+			);
 			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-fmp4_player/Pods-fmp4_player-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -244,7 +310,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				37FE36F62EB1B98800FACDA1 /* Fmp4AVPlayerView.swift in Sources */,
+				37E684102EBB43E700C67CE4 /* Fmp4DataSource.swift in Sources */,
+				375BACEC2EB07D4F00AFFEFF /* Fmp4AVPlayer.mm in Sources */,
 				761780ED2CA45674006654EE /* AppDelegate.swift in Sources */,
+				376EFBBE2EAB69100081442A /* NativeFmp4Player.swift in Sources */,
+				376EFBC12EAB6A350081442A /* Fmp4Module.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -259,6 +330,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				ENABLE_BITCODE = NO;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				INFOPLIST_FILE = fmp4_player/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.1;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -273,6 +345,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = fmp4_player;
+				SWIFT_OBJC_BRIDGING_HEADER = "fmp4_module/fmp4_player-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -286,6 +359,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				INFOPLIST_FILE = fmp4_player/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.1;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -300,6 +374,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = fmp4_player;
+				SWIFT_OBJC_BRIDGING_HEADER = "fmp4_module/fmp4_player-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -336,8 +411,11 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
+				DEFINES_MODULE = NO;
+				DEVELOPMENT_TEAM = D6YJ2MU5C9;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = "";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -374,7 +452,11 @@
 					"-DFOLLY_CFG_NO_COROUTINES=1",
 					"-DFOLLY_HAVE_CLOCK_GETTIME=1",
 				);
+				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
 				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG";
+				USE_HERMES = true;
 			};
 			name = Debug;
 		};
@@ -409,8 +491,11 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
+				DEFINES_MODULE = NO;
+				DEVELOPMENT_TEAM = D6YJ2MU5C9;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = "";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -439,7 +524,11 @@
 					"-DFOLLY_CFG_NO_COROUTINES=1",
 					"-DFOLLY_HAVE_CLOCK_GETTIME=1",
 				);
+				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
 				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				USE_HERMES = true;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;

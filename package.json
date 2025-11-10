@@ -9,11 +9,24 @@
     "start": "react-native start",
     "test": "jest"
   },
+  "codegenConfig": {
+    "name": "NativeFmp4PlayerSpec",
+    "type": "all",
+    "jsSrcsDir": "specs",
+    "android": {
+      "javaPackageName": "com.fmp4_module"
+    }, 
+    "ios": {
+      "componentProvider": {
+        "StreamView": "Fmp4AVPlayer"
+      }
+    }
+  },
   "dependencies": {
+    "@react-native/new-app-screen": "0.82.1",
     "react": "19.1.1",
     "react-native": "0.82.1",
-    "@react-native/new-app-screen": "0.82.1",
-    "react-native-safe-area-context": "^5.5.2"
+    "react-native-safe-area-context": "^5.6.2"
   },
   "devDependencies": {
     "@babel/core": "^7.25.2",
