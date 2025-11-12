@@ -27,6 +27,7 @@ class Fmp4DataSource: NSObject, AVAssetResourceLoaderDelegate {
     } else if let _ = loadingRequest.dataRequest {
       return handleDataRequest(loadingRequest)
     } else {
+      loadingRequest.finishLoading()
         return false
     }
   }
@@ -40,12 +41,14 @@ class Fmp4DataSource: NSObject, AVAssetResourceLoaderDelegate {
 
     
   private func handleContentInfoRequest(_ loadingRequest: AVAssetResourceLoadingRequest) -> Bool {
-    guard let infoRequest = loadingRequest.contentInformationRequest, let _ = loadingRequest.dataRequest else { return true }
+    guard let infoRequest = loadingRequest.contentInformationRequest, let dataRequest = loadingRequest.dataRequest else { return true }
+ 
       InitContent = true
       infoRequest.contentType = AVFileType.mp4.rawValue
       infoRequest.isByteRangeAccessSupported = true
     //infoRequest.contentLength = Int64.max
     print(loadingRequest.contentInformationRequest!)
+    loadingRequest.finishLoading()
     return true
   }
     
@@ -55,12 +58,12 @@ class Fmp4DataSource: NSObject, AVAssetResourceLoaderDelegate {
       let requestOffset = dataRequest.requestedOffset
       let requestedLength = Int64(dataRequest.requestedLength)
       let currentOffset = dataRequest.currentOffset
-      let data = inputStream?.availableData
+    let data = inputStream?.availableData
       print("requestedOffset: \(requestOffset), requestedLength: \(requestedLength), currentOffset: \(currentOffset)")
       print(data!)
    // let responseData = data!.subdata(in: Data.Index(requestOffset)..<Data.Index((requestOffset + requestedLength)))
       dataRequest.respond(with: data!)
-
+    loadingRequest.finishLoading()
       return true
   }
 }

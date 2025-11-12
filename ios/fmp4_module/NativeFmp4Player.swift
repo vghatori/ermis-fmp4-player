@@ -8,95 +8,59 @@
 import Foundation
 import MobileVLCKit
 import AVFoundation
-
+import GCDWebServer
 @objcMembers
 class NativeFmp4Player: NSObject {
-  private var url : URL = URL(string: "wss://streaming.ermis.network/stream-gate/software/Ermis-streaming/c6bb6751-8595-495a-ae9c-7d21b79ef834")!
+  private var url : URL = URL(string: "wss://sfu-do-streaming.ermis.network/stream-gate/software/Ermis-streaming/060f350f-9da8-422d-b14d-eb9642bea92a")!
   private var socketSession : URLSession?
   private var socketTask : URLSessionWebSocketTask?
   private static var player : AVPlayer?
-  private var fmp4Delegate : Fmp4DataSource?
-  private let pipe = Pipe()
-  private var outputStream : FileHandle!
-  private var inputStream : FileHandle!
-  private var firstInit : Bool = false
+  private let SEGMENT_DURATION : Double = 1.1
+  private var LastPushSegmentTime = CACurrentMediaTime()
+  private var FileURL : URL?
+  private var playerItem: AVPlayerItem?
+  private var proxyServer : GCDWebServer?
+  private let tmpDir = FileManager.default.temporaryDirectory
+  private var hlsDir : URL
+  private var segmentCount = 0
+  private var endStream = false
+  private var connectStream = false
+  private var SegmentBuffer : [Data]
+  private var initSegment : Data?
+  
   
   override init() {
     self.socketSession = nil
     self.socketTask = nil
-    inputStream = pipe.fileHandleForReading
-    outputStream = pipe.fileHandleForWriting
+    self.hlsDir = tmpDir.appendingPathComponent("hls")
+    self.proxyServer = GCDWebServer()
+    self.SegmentBuffer = []
     super.init()
   }
   
-  private func setupPlayer() {
-    
-  }
-  
-  
-  
+  @available(iOS 16.0, *)
   func startStreaming() {
+    proxyServer?.addGETHandler(forBasePath: "/", directoryPath: hlsDir.path(), indexFilename: nil, cacheAge: 0, allowRangeRequests: true)
+    try? FileManager.default.createDirectory(atPath: hlsDir.path(), withIntermediateDirectories: true)
+    proxyServer?.start(withPort: 8080, bonjourName: nil)
     var request = URLRequest(url: url)
     request.addValue("fmp4", forHTTPHeaderField: "Sec-WebSocket-Protocol")
     self.socketSession = URLSession(configuration: .default)
     self.socketTask = socketSession?.webSocketTask(with: request)
     readMessage()
-   // let Url = URL("http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4")
-    let asset = AVURLAsset(url: URL("fmp4://localhost/stream")!)
-    fmp4Delegate = Fmp4DataSource(inputStream: inputStream)
-    let loadqueue = DispatchQueue(label: "delegate")
-    asset.resourceLoader.setDelegate(fmp4Delegate, queue: loadqueue)
-    let playerItem = AVPlayerItem(asset: asset)
-    //checkAssetMetadata(playerItem: playerItem)
-    
-    NativeFmp4Player.player = AVPlayer(playerItem: playerItem)
-    Fmp4AVPlayerView.AttachPlayerToLayer(avplayer: NativeFmp4Player.player!)
-    NativeFmp4Player.player?.play()
-    
-    
-   
   }
-
-  private func checkAssetMetadata(playerItem: AVPlayerItem) {
-      print("\n=== 🔍 CHECK FTYP/MOOV PARSING ===")
-      
-      let tracks = playerItem.tracks
-
-      
-      if tracks.isEmpty {
-          print("❌ Không có tracks → FTYP/MOOV CHƯA ĐƯỢC PARSE!")
-          
-          // Thử check lại sau 0.5s
-          DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [weak self] in
-              self?.checkAssetMetadata(playerItem: playerItem)
-          }
-          return
-      }
-      
-      print("✅ Có \(tracks.count) track(s) → FTYP và MOOV đã parse thành công!")
-      
-      for (index, track) in tracks.enumerated() {
-          if let assetTrack = track.assetTrack {
-            
-              print("\nTrack \(index):")
-              print("  Type: \(assetTrack.mediaType.rawValue)")
-              print("  ID: \(assetTrack.trackID)")
-              
-              if assetTrack.mediaType == .video {
-                  print("  Resolution: \(Int(assetTrack.naturalSize.width))x\(Int(assetTrack.naturalSize.height))")
-                  print("  ✅ FTYP và MOOV đã được parse!")
-              }
-          }
-      }
+  private func isInitSegment(_ data: Data) -> Bool {
+    return data.count > 8 && String(data: data.subdata(in: 5..<9), encoding: .ascii) == "ftyp"
   }
   
   func stopStreaming() {
     socketTask?.cancel(with: .goingAway, reason: nil)
+    endStream = true
   }
   
   
+  @available(iOS 16.0, *)
   private func readMessage() {
-    
     socketTask?.resume();
     socketTask?.receive { result in
       switch result {
@@ -107,8 +71,6 @@ class NativeFmp4Player: NSObject {
                 guard !data.isEmpty else {
                   return
                 }
-              //self.sendFrameToAVPlayer(data.dropFirst())
-              
               self.sendFrameToAVPlayer(data.dropFirst())
             case .string(let config):
                 guard !config.isEmpty else {
@@ -121,8 +83,82 @@ class NativeFmp4Player: NSObject {
       }
     }
   }
-  private func sendFrameToAVPlayer(_ data : Data) {
-    try? outputStream.write(contentsOf: data)
+
+  private func appendBuffer(_ buffer: Data) {
+    if isInitSegment(buffer) {
+      let initUrl = hlsDir.appendingPathComponent("init.mp4")
+      try? buffer.write(to: initUrl)
+      return
+    }
+
+    SegmentBuffer.append(buffer)
+    let now = CACurrentMediaTime()
+    if now - LastPushSegmentTime > SEGMENT_DURATION {
+      WriteBufferToSegment()
+      LastPushSegmentTime = now
+    }
+    
+  }
+  
+  @available(iOS 16.0, *)
+  private func sendFrameToAVPlayer(_ data: Data) {
+    appendBuffer(data)
+    var playlist = "#EXTM3U\n"
+    playlist.append("#EXT-X-VERSION:7\n")
+    playlist.append("#EXT-X-TARGETDURATION:3\n")
+    
+    // Keep only last 5 segments
+    let startSegment = max(0, segmentCount - 5)
+    playlist.append("#EXT-X-MEDIA-SEQUENCE:\(startSegment)\n")
+
+    playlist.append("#EXT-X-MAP:URI=\"init.mp4\"\n")
+    
+    for i in max(0, segmentCount - 5)..<segmentCount {
+      playlist.append("#EXTINF:\(Double(round(1000*1.100)/1000)),\n")
+      playlist.append("/segment-\(i).m4s\n")
+    }
+    if endStream {
+      playlist.append("#EXT-X-ENDLIST")
+    }
+    
+    let playlistUrl = hlsDir.appendingPathComponent("playlist.m3u8")
+    try? playlist.write(toFile: playlistUrl.path(), atomically: true, encoding: .utf8)
+    if(segmentCount == 1 && !connectStream) {
+      startPlayer()
+    }
+  }
+  
+  private func startPlayer() {
+      connectStream = true
+      
+      let playlistURL = URL(string: "http://localhost:8080/playlist.m3u8")!
+     
+      
+    let asset = AVURLAsset(url: playlistURL)
+      let playerItem = AVPlayerItem(asset: asset)
+      playerItem.preferredForwardBufferDuration = 4.0
+      
+      NativeFmp4Player.player = AVPlayer(playerItem: playerItem)
+
+      Fmp4AVPlayerView.AttachPlayerToLayer(avplayer: NativeFmp4Player.player!)
+      
+    DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+        NativeFmp4Player.player?.play()
+      }
+    }
+  
+  private func WriteBufferToSegment() {
+    var segmentData = Data()
+    print(segmentData.count)
+    let segmentName = "segment-\(segmentCount).m4s"
+    let segmentURL = hlsDir.appendingPathComponent(segmentName)
+    SegmentBuffer.forEach { data in
+        segmentData.append(data)
+    }
+
+    try? segmentData.write(to: segmentURL)
+    SegmentBuffer.removeAll()
+    segmentCount += 1
   }
 
 }

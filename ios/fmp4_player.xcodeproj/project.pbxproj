@@ -7,10 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0C80B921A6F3F58F76C31292 /* libPods-fmp4_player.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DCACB8F33CDC322A6C60F78 /* libPods-fmp4_player.a */; };
+		1073D80A30CC7B174DB8A90D /* libPods-fmp4_player.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DCACB8F33CDC322A6C60F78 /* libPods-fmp4_player.a */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
+		370A91DD2EC1E3DA00A193DB /* GCDWebServer in Frameworks */ = {isa = PBXBuildFile; productRef = 370A91DC2EC1E3DA00A193DB /* GCDWebServer */; settings = {ATTRIBUTES = (Required, ); }; };
 		375BACEC2EB07D4F00AFFEFF /* Fmp4AVPlayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 375BACEB2EB07D4F00AFFEFF /* Fmp4AVPlayer.mm */; };
-		3761095D2EB9B0E900D98975 /* MobileVLCKit.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3761095C2EB9B0E900D98975 /* MobileVLCKit.xcframework */; };
+		3761095D2EB9B0E900D98975 /* MobileVLCKit.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3761095C2EB9B0E900D98975 /* MobileVLCKit.xcframework */; settings = {ATTRIBUTES = (Required, ); }; };
 		376EFBBE2EAB69100081442A /* NativeFmp4Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 376EFBBD2EAB69100081442A /* NativeFmp4Player.swift */; };
 		376EFBC12EAB6A350081442A /* Fmp4Module.mm in Sources */ = {isa = PBXBuildFile; fileRef = 376EFBC02EAB6A350081442A /* Fmp4Module.mm */; };
 		37E684102EBB43E700C67CE4 /* Fmp4DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37E6840F2EBB43E700C67CE4 /* Fmp4DataSource.swift */; };
@@ -38,6 +39,8 @@
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = fmp4_player/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = fmp4_player/Info.plist; sourceTree = "<group>"; };
 		13B07FB81A68108700A75B9A /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = PrivacyInfo.xcprivacy; path = fmp4_player/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		370A91D42EC1D8AF00A193DB /* libGCDWebServer.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libGCDWebServer.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		370A91D62EC1DAD200A193DB /* libGCDWebServer.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libGCDWebServer.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		375BACEA2EB07D4F00AFFEFF /* Fmp4AVPlayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Fmp4AVPlayer.h; sourceTree = "<group>"; };
 		375BACEB2EB07D4F00AFFEFF /* Fmp4AVPlayer.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = Fmp4AVPlayer.mm; sourceTree = "<group>"; };
 		3761095C2EB9B0E900D98975 /* MobileVLCKit.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = MobileVLCKit.xcframework; path = Pods/MobileVLCKit/MobileVLCKit.xcframework; sourceTree = "<group>"; };
@@ -61,7 +64,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				3761095D2EB9B0E900D98975 /* MobileVLCKit.xcframework in Frameworks */,
-				0C80B921A6F3F58F76C31292 /* libPods-fmp4_player.a in Frameworks */,
+				370A91DD2EC1E3DA00A193DB /* GCDWebServer in Frameworks */,
+				1073D80A30CC7B174DB8A90D /* libPods-fmp4_player.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -83,6 +87,8 @@
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				370A91D62EC1DAD200A193DB /* libGCDWebServer.a */,
+				370A91D42EC1D8AF00A193DB /* libGCDWebServer.a */,
 				3761095C2EB9B0E900D98975 /* MobileVLCKit.xcframework */,
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
 				5DCACB8F33CDC322A6C60F78 /* libPods-fmp4_player.a */,
@@ -200,6 +206,9 @@
 				Base,
 			);
 			mainGroup = 83CBB9F61A601CBA00E9B192;
+			packageReferences = (
+				370A91DB2EC1E3DA00A193DB /* XCRemoteSwiftPackageReference "GCDWebServer" */,
+			);
 			productRefGroup = 83CBBA001A601CBA00E9B192 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -247,13 +256,9 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-fmp4_player/Pods-fmp4_player-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
-			inputPaths = (
-			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-fmp4_player/Pods-fmp4_player-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -290,13 +295,9 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-fmp4_player/Pods-fmp4_player-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
-			inputPaths = (
-			);
 			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-fmp4_player/Pods-fmp4_player-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -555,6 +556,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		370A91DB2EC1E3DA00A193DB /* XCRemoteSwiftPackageReference "GCDWebServer" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/yene/GCDWebServer";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.5.7;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		370A91DC2EC1E3DA00A193DB /* GCDWebServer */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 370A91DB2EC1E3DA00A193DB /* XCRemoteSwiftPackageReference "GCDWebServer" */;
+			productName = GCDWebServer;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 83CBB9F71A601CBA00E9B192 /* Project object */;
 }
