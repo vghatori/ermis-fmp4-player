@@ -14,7 +14,6 @@
 		3761095D2EB9B0E900D98975 /* MobileVLCKit.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3761095C2EB9B0E900D98975 /* MobileVLCKit.xcframework */; settings = {ATTRIBUTES = (Required, ); }; };
 		376EFBBE2EAB69100081442A /* NativeFmp4Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 376EFBBD2EAB69100081442A /* NativeFmp4Player.swift */; };
 		376EFBC12EAB6A350081442A /* Fmp4Module.mm in Sources */ = {isa = PBXBuildFile; fileRef = 376EFBC02EAB6A350081442A /* Fmp4Module.mm */; };
-		37E684102EBB43E700C67CE4 /* Fmp4DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37E6840F2EBB43E700C67CE4 /* Fmp4DataSource.swift */; };
 		37FE36F62EB1B98800FACDA1 /* Fmp4AVPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37FE36F52EB1B98800FACDA1 /* Fmp4AVPlayerView.swift */; };
 		761780ED2CA45674006654EE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761780EC2CA45674006654EE /* AppDelegate.swift */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
@@ -48,7 +47,6 @@
 		376EFBBF2EAB6A160081442A /* Fmp4ModuleBridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Fmp4ModuleBridge.h; sourceTree = "<group>"; };
 		376EFBC02EAB6A350081442A /* Fmp4Module.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = Fmp4Module.mm; sourceTree = "<group>"; };
 		376EFBC22EAB6A370081442A /* fmp4_player-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "fmp4_player-Bridging-Header.h"; sourceTree = "<group>"; };
-		37E6840F2EBB43E700C67CE4 /* Fmp4DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fmp4DataSource.swift; sourceTree = "<group>"; };
 		37FE36F52EB1B98800FACDA1 /* Fmp4AVPlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fmp4AVPlayerView.swift; sourceTree = "<group>"; };
 		3B4392A12AC88292D35C810B /* Pods-fmp4_player.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fmp4_player.debug.xcconfig"; path = "Target Support Files/Pods-fmp4_player/Pods-fmp4_player.debug.xcconfig"; sourceTree = "<group>"; };
 		5709B34CF0A7D63546082F79 /* Pods-fmp4_player.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fmp4_player.release.xcconfig"; path = "Target Support Files/Pods-fmp4_player/Pods-fmp4_player.release.xcconfig"; sourceTree = "<group>"; };
@@ -110,7 +108,6 @@
 		37FE36F72EB1B9CF00FACDA1 /* fmp4_component */ = {
 			isa = PBXGroup;
 			children = (
-				37E6840F2EBB43E700C67CE4 /* Fmp4DataSource.swift */,
 				37FE36F52EB1B98800FACDA1 /* Fmp4AVPlayerView.swift */,
 				375BACEA2EB07D4F00AFFEFF /* Fmp4AVPlayer.h */,
 				375BACEB2EB07D4F00AFFEFF /* Fmp4AVPlayer.mm */,
@@ -256,9 +253,13 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-fmp4_player/Pods-fmp4_player-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
+			inputPaths = (
+			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-fmp4_player/Pods-fmp4_player-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -295,9 +296,13 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-fmp4_player/Pods-fmp4_player-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
+			inputPaths = (
+			);
 			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-fmp4_player/Pods-fmp4_player-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -312,7 +317,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				37FE36F62EB1B98800FACDA1 /* Fmp4AVPlayerView.swift in Sources */,
-				37E684102EBB43E700C67CE4 /* Fmp4DataSource.swift in Sources */,
 				375BACEC2EB07D4F00AFFEFF /* Fmp4AVPlayer.mm in Sources */,
 				761780ED2CA45674006654EE /* AppDelegate.swift in Sources */,
 				376EFBBE2EAB69100081442A /* NativeFmp4Player.swift in Sources */,

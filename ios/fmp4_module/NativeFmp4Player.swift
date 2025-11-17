@@ -136,10 +136,12 @@ class NativeFmp4Player: NSObject {
       
     let asset = AVURLAsset(url: playlistURL)
       let playerItem = AVPlayerItem(asset: asset)
-      playerItem.preferredForwardBufferDuration = 4.0
+    playerItem.preferredForwardBufferDuration = 1.0
+    playerItem.canUseNetworkResourcesForLiveStreamingWhilePaused = true
+ 
       
       NativeFmp4Player.player = AVPlayer(playerItem: playerItem)
-
+    NativeFmp4Player.player?.automaticallyWaitsToMinimizeStalling = false
       Fmp4AVPlayerView.AttachPlayerToLayer(avplayer: NativeFmp4Player.player!)
       
     DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
@@ -149,7 +151,6 @@ class NativeFmp4Player: NSObject {
   
   private func WriteBufferToSegment() {
     var segmentData = Data()
-    print(segmentData.count)
     let segmentName = "segment-\(segmentCount).m4s"
     let segmentURL = hlsDir.appendingPathComponent(segmentName)
     SegmentBuffer.forEach { data in

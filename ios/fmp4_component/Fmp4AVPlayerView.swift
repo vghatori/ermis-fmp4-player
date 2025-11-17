@@ -13,7 +13,7 @@ import MobileVLCKit
 @objcMembers
 class Fmp4AVPlayerView: UIView {
   private static var avlayer : AVPlayerLayer?
-  
+  private static var playerViewController = AVPlayerViewController()
   override init(frame: CGRect) {
       super.init(frame: frame)
       commonInit()
@@ -25,22 +25,25 @@ class Fmp4AVPlayerView: UIView {
   }
 
   private func commonInit() {
-    Fmp4AVPlayerView.avlayer = AVPlayerLayer()
-    layer.addSublayer(Fmp4AVPlayerView.avlayer!)
+//    Fmp4AVPlayerView.avlayer = AVPlayerLayer()
+//    layer.addSublayer(Fmp4AVPlayerView.avlayer!)
+    Fmp4AVPlayerView.playerViewController.showsPlaybackControls = true
+    self.addSubview(Fmp4AVPlayerView.playerViewController.view)
   }
   
   func setStreamID(_ Id : String) {
   }
   
   static func AttachPlayerToLayer(avplayer : AVPlayer) {
-    Fmp4AVPlayerView.avlayer?.player = avplayer
+    playerViewController.player = avplayer
+  //  Fmp4AVPlayerView.avlayer?.player = avplayer
   }
 
   
   override func layoutSubviews() {
       super.layoutSubviews()
-    Fmp4AVPlayerView.avlayer?.frame = bounds
+    Fmp4AVPlayerView.playerViewController.view.frame = bounds
+  //  Fmp4AVPlayerView.avlayer!.frame = bounds
   }
 
 }
-
