@@ -8,7 +8,6 @@ PODS:
   - hermes-engine (0.82.1):
     - hermes-engine/Pre-built (= 0.82.1)
   - hermes-engine/Pre-built (0.82.1)
-  - MobileVLCKit (3.3.17)
   - RCT-Folly (2024.11.18.00):
     - boost
     - DoubleConversion
@@ -2420,7 +2419,6 @@ DEPENDENCIES:
   - fmt (from `../node_modules/react-native/third-party-podspecs/fmt.podspec`)
   - glog (from `../node_modules/react-native/third-party-podspecs/glog.podspec`)
   - hermes-engine (from `../node_modules/react-native/sdks/hermes-engine/hermes-engine.podspec`)
-  - MobileVLCKit (~> 3.3.0)
   - RCT-Folly (from `../node_modules/react-native/third-party-podspecs/RCT-Folly.podspec`)
   - RCTDeprecation (from `../node_modules/react-native/ReactApple/Libraries/RCTFoundation/RCTDeprecation`)
   - RCTRequired (from `../node_modules/react-native/Libraries/Required`)
@@ -2493,7 +2491,6 @@ DEPENDENCIES:
 
 SPEC REPOS:
   trunk:
-    - MobileVLCKit
     - SocketRocket
 
 EXTERNAL SOURCES:
@@ -2655,7 +2652,6 @@ SPEC CHECKSUMS:
   fmt: a40bb5bd0294ea969aaaba240a927bd33d878cdd
   glog: 5683914934d5b6e4240e497e0f4a3b42d1854183
   hermes-engine: 273e30e7fb618279934b0b95ffab60ecedb7acf5
-  MobileVLCKit: c5dd1b0ae933dc9c2348099840e753496dcdd908
   RCT-Folly: 846fda9475e61ec7bcbf8a3fe81edfcaeb090669
   RCTDeprecation: f17e2ebc07876ca9ab8eb6e4b0a4e4647497ae3a
   RCTRequired: e2c574c1b45231f7efb0834936bd609d75072b63
@@ -2725,6 +2721,6 @@ SPEC CHECKSUMS:
   SocketRocket: d4aabe649be1e368d1318fdf28a022d714d65748
   Yoga: 689c8e04277f3ad631e60fe2a08e41d411daf8eb
 
-PODFILE CHECKSUM: 34b219820c02e32c7cf7f2190d66d5ece9c410ca
+PODFILE CHECKSUM: 1bd118abd873951725ce9f20922ad60c6e163b3f
 
 COCOAPODS: 1.16.2

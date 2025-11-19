@@ -8,7 +8,6 @@
 import UIKit
 import AVFoundation
 import AVKit
-import MobileVLCKit
 
 @objcMembers
 class Fmp4AVPlayerView: UIView {
@@ -25,25 +24,22 @@ class Fmp4AVPlayerView: UIView {
   }
 
   private func commonInit() {
-//    Fmp4AVPlayerView.avlayer = AVPlayerLayer()
-//    layer.addSublayer(Fmp4AVPlayerView.avlayer!)
     Fmp4AVPlayerView.playerViewController.showsPlaybackControls = true
     self.addSubview(Fmp4AVPlayerView.playerViewController.view)
   }
   
   func setStreamID(_ Id : String) {
+    NativeFmp4Player.streamId = Id
   }
   
   static func AttachPlayerToLayer(avplayer : AVPlayer) {
     playerViewController.player = avplayer
-  //  Fmp4AVPlayerView.avlayer?.player = avplayer
   }
 
   
   override func layoutSubviews() {
-      super.layoutSubviews()
+    super.layoutSubviews()
     Fmp4AVPlayerView.playerViewController.view.frame = bounds
-  //  Fmp4AVPlayerView.avlayer!.frame = bounds
   }
 
 }

@@ -22,7 +22,6 @@ target 'fmp4_player' do
     # An absolute path to your application root.
     :app_path => "#{Pod::Config.instance.installation_root}/.."
   )
-  pod 'MobileVLCKit', '~>3.3.0'
 
   post_install do |installer|
     react_native_post_install(

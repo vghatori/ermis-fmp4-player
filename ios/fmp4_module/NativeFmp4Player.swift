@@ -6,12 +6,13 @@
 //
 
 import Foundation
-import MobileVLCKit
+
 import AVFoundation
 import GCDWebServer
 @objcMembers
 class NativeFmp4Player: NSObject {
-  private var url : URL = URL(string: "wss://sfu-do-streaming.ermis.network/stream-gate/software/Ermis-streaming/060f350f-9da8-422d-b14d-eb9642bea92a")!
+  public static var streamId : String?
+  private var url : URL?
   private var socketSession : URLSession?
   private var socketTask : URLSessionWebSocketTask?
   private static var player : AVPlayer?
@@ -43,7 +44,9 @@ class NativeFmp4Player: NSObject {
     proxyServer?.addGETHandler(forBasePath: "/", directoryPath: hlsDir.path(), indexFilename: nil, cacheAge: 0, allowRangeRequests: true)
     try? FileManager.default.createDirectory(atPath: hlsDir.path(), withIntermediateDirectories: true)
     proxyServer?.start(withPort: 8080, bonjourName: nil)
-    var request = URLRequest(url: url)
+    //060f350f-9da8-422d-b14d-eb9642bea92a
+    url = URL(string: "wss://sfu-do-streaming.ermis.network/stream-gate/software/Ermis-streaming/\(NativeFmp4Player.streamId!)")!
+    var request = URLRequest(url: url!)
     request.addValue("fmp4", forHTTPHeaderField: "Sec-WebSocket-Protocol")
     self.socketSession = URLSession(configuration: .default)
     self.socketTask = socketSession?.webSocketTask(with: request)
@@ -136,15 +139,13 @@ class NativeFmp4Player: NSObject {
       
     let asset = AVURLAsset(url: playlistURL)
       let playerItem = AVPlayerItem(asset: asset)
-    playerItem.preferredForwardBufferDuration = 1.0
-    playerItem.canUseNetworkResourcesForLiveStreamingWhilePaused = true
- 
-      
+      playerItem.preferredForwardBufferDuration = 1.0
+      playerItem.canUseNetworkResourcesForLiveStreamingWhilePaused = true
       NativeFmp4Player.player = AVPlayer(playerItem: playerItem)
-    NativeFmp4Player.player?.automaticallyWaitsToMinimizeStalling = false
+      NativeFmp4Player.player?.automaticallyWaitsToMinimizeStalling = false
       Fmp4AVPlayerView.AttachPlayerToLayer(avplayer: NativeFmp4Player.player!)
       
-    DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+      DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
         NativeFmp4Player.player?.play()
       }
     }

@@ -37,7 +37,7 @@ public class Fmp4StreamPlayerModule extends NativeFmp4PlayerSpec {
 
     public static final String NAME = "NativeFmp4Player";
     public AudioAttributes attributes;
-    public static String Id = ""; 
+    public static String StreamId = ""; 
     public ExoPlayer player;
     private WebSocket webSocket;
     private PipedOutputStream pipedOutputStream;
@@ -96,9 +96,9 @@ public class Fmp4StreamPlayerModule extends NativeFmp4PlayerSpec {
         OkHttpClient client = new OkHttpClient.Builder()
                 .retryOnConnectionFailure(true)
                 .build();
-
+        //060f350f-9da8-422d-b14d-eb9642bea92a
         Request request = new Request.Builder()
-                .url("wss://sfu-do-streaming.ermis.network/stream-gate/software/Ermis-streaming/c6bb6751-8595-495a-ae9c-7d21b79ef834")
+                .url("wss://sfu-do-streaming.ermis.network/stream-gate/software/Ermis-streaming/" + Fmp4StreamPlayerModule.StreamId)
                 .addHeader("Sec-WebSocket-Protocol", "fmp4")
                 .build();
                 

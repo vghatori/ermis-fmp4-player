@@ -44,6 +44,6 @@ public class StreamView extends FrameLayout {
 
   public void setStreamId(String value) {
     if(value == null) return;
-    else Fmp4StreamPlayerModule.Id = value;
+    else Fmp4StreamPlayerModule.StreamId = value;
   }
 }

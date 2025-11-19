@@ -11,7 +11,6 @@
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		370A91DD2EC1E3DA00A193DB /* GCDWebServer in Frameworks */ = {isa = PBXBuildFile; productRef = 370A91DC2EC1E3DA00A193DB /* GCDWebServer */; settings = {ATTRIBUTES = (Required, ); }; };
 		375BACEC2EB07D4F00AFFEFF /* Fmp4AVPlayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 375BACEB2EB07D4F00AFFEFF /* Fmp4AVPlayer.mm */; };
-		3761095D2EB9B0E900D98975 /* MobileVLCKit.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3761095C2EB9B0E900D98975 /* MobileVLCKit.xcframework */; settings = {ATTRIBUTES = (Required, ); }; };
 		376EFBBE2EAB69100081442A /* NativeFmp4Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 376EFBBD2EAB69100081442A /* NativeFmp4Player.swift */; };
 		376EFBC12EAB6A350081442A /* Fmp4Module.mm in Sources */ = {isa = PBXBuildFile; fileRef = 376EFBC02EAB6A350081442A /* Fmp4Module.mm */; };
 		37FE36F62EB1B98800FACDA1 /* Fmp4AVPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37FE36F52EB1B98800FACDA1 /* Fmp4AVPlayerView.swift */; };
@@ -61,7 +60,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3761095D2EB9B0E900D98975 /* MobileVLCKit.xcframework in Frameworks */,
 				370A91DD2EC1E3DA00A193DB /* GCDWebServer in Frameworks */,
 				1073D80A30CC7B174DB8A90D /* libPods-fmp4_player.a in Frameworks */,
 			);
