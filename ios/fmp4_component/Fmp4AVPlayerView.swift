@@ -9,6 +9,7 @@ import UIKit
 import AVFoundation
 import AVKit
 
+
 @objcMembers
 class Fmp4AVPlayerView: UIView {
   private static var avlayer : AVPlayerLayer?
@@ -29,7 +30,7 @@ class Fmp4AVPlayerView: UIView {
   }
   
   func setStreamID(_ Id : String) {
-    NativeFmp4Player.streamId = Id
+    NativeFmp4PlayerLib.streamId = Id
   }
   
   static func AttachPlayerToLayer(avplayer : AVPlayer) {
